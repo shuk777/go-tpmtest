@@ -28,7 +28,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	att, err := device.AttestPlatform(ak, nonceHash, &attest.PlatformAttestConfig{EventLog: []byte{0}})
+	att, err := device.AttestPlatform(ak, nonceHash, &attest.PlatformAttestConfig{})
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -37,4 +37,5 @@ func main() {
 		receivedPcrDigest = append(receivedPcrDigest, pcr.Digest...)
 	}
 	fmt.Println(base64.StdEncoding.EncodeToString(receivedPcrDigest))
+	fmt.Println(att.EventLog)
 }
